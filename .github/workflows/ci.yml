@@ -15,8 +15,8 @@ jobs:
   test:
 
     runs-on: ubuntu-latest
-      strategy:
-        matrix:
+    strategy:
+      matrix:
           ruby-version: ['3.2']
 
     steps:

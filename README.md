@@ -9,8 +9,8 @@ Tic Tac Toe is a two player game played on a 3 x 3 grid. One player will mark th
 ## Setup
 1. [Clone the repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) to your local computer.
 2. Use your terminal to navigate into your new tic-tac-toe folder and install project dependencies by running <code>bundle install</code>.
-3. To start the game, try running <code>ruby bin/play.rb</code> from within the tic-tac-toe folder. 
-4. To run the tests, try running  <code>bundle exec rspec</code> from within the tic-tac-toe folder.
+3. To start the game, run `ruby bin/play.rb` from within the tic-tac-toe folder. 
+4. To run the tests, run `bundle exec rspec` from within the tic-tac-toe foler.
 
 ## Built with
 * [Ruby](https://www.ruby-lang.org/en/)

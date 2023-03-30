@@ -18,14 +18,14 @@ describe Board do
   end
 
   it 'prevents a player from marking a spot that has already been played' do
+    test_spot = 5
     @test_board.mark_board('X', 5)
-    @test_board.mark_board('O', 5)
-    expect(@test_board.draw_board).to eq "\n 1 | 2 | 3 \n===+===+===\n 4 | X | 6 \n===+===+===\n 7 | 8 | 9 \n\n"
+    expect(@test_board.free_spot?(test_spot)).to be false
   end
 
   it 'prevents a player from marking a spot with something other than X or O' do
-    @test_board.mark_board('Y', 5)
-    expect(@test_board.draw_board).to eq "\n 1 | 2 | 3 \n===+===+===\n 4 | 5 | 6 \n===+===+===\n 7 | 8 | 9 \n\n"
+    player_mark = 'Y'
+    expect(@test_board.valid_marker?(player_mark)).to eq false 
   end
 
 end

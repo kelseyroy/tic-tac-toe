@@ -22,13 +22,7 @@ class Board
   end
 
   def mark_board(player_mark, spot)
-    if !valid_marker?(player_mark)      
-      puts "\n I don't recognize #{player_mark}. Try again with X or O.\n"
-    elsif free_spot?(spot)
       @board[spot - 1] = player_mark
-    else 
-      puts "\n Sorry, that spot is taken. Please try a again.\n"
-    end
   end
 end
 

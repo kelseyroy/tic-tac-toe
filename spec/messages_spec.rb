@@ -2,20 +2,22 @@ require 'spec_helper'
 require './lib/messages'
 
 describe Message do
-  before(:each) do
-    @test_message = Message.new
-  end
   
-  it 'returns welcome message' do
-    expected_message = "Welcome to Tic Tac Toe!"
-    actual_message = @test_message.welcome
-    expect(expected_message).to eq actual_message
-  end
+  describe "lookup" do
+    it 'throws an error when a message is not defined' do
+      test_message = Message.new
 
-  it 'returns instructions' do
-    expected_message = "Tic Tac Toe is a two player game played on a 3 x 3 grid.  When prompted, each player will place their mark by entering a number between 1-9 that corresponds with an available square on the grid."
-    actual_message = @test_message.instructions
-    expect(expected_message).to eq actual_message
-  end
+      expect {
+        result = test_message.lookup(:does_not_exist)
+      }.to raise_error(ArgumentError, "Message does not exist")     
+    end
 
+    it 'displays a message when a message is defined' do
+      test_message = Message.new
+
+      result = test_message.lookup(:welcome)
+
+      expect(result).to eq "Welcome to Tic Tac Toe!" 
+    end
+  end
 end

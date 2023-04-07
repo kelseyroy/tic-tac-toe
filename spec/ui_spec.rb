@@ -16,3 +16,4 @@ describe UserInterface do
         expect(@ui.get_spot).to eq(5)
     end
 end
+

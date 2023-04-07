@@ -18,3 +18,4 @@ class Message
     @messages[message]
   end
 end
+

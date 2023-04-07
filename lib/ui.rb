@@ -22,7 +22,10 @@ class UserInterface
         end
     end
 
+    private
+
     def valid_spot?(spot)
         (1..9).to_a.include?(spot)
     end
 end
+

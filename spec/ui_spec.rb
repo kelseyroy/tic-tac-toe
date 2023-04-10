@@ -11,9 +11,9 @@ describe UserInterface do
         expect(@ui.get_spot_input).to eq(5)
     end
 
-    xit 'will re-prompt player for a valid spot' do
-        allow(@ui).to receive(:gets).and_return("0", "5")
-        expect(@ui.get_spot).to eq(5)
+    it 'can display a message to the player' do
+        message = "\nmessage test\n"
+        expect {@ui.display(message)}.to output(message).to_stdout
     end
 end
 

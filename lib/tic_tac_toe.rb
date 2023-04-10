@@ -1,13 +1,13 @@
-require_relative 'board'
+require_relative 'game_play'
 require_relative 'messages'
 require_relative 'ui'
 
 class TicTacToe
   def initialize
-    @board = Board.new
+    @game = GamePlay.new
     @message = Message.new
     @ui = UserInterface.new
-    @num_of_turns = 0
+    @cells = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   end
 
   def play
@@ -16,9 +16,4 @@ class TicTacToe
     puts display_board
   end
 
-  def display_board
-    @board.draw_board
-  end
-
 end
-

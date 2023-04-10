@@ -4,12 +4,13 @@ require './lib/board.rb'
 
 describe TicTacToe do
   before(:each) do
-    @test_game = TicTacToe.new
+    board = Board.new
+    @test_game = TicTacToe.new(board.starter_board)
   end
 
-  it 'can display the current board from Board class' do
-    board = Board.new
-    expect(@test_game.display_board).to eq "\n 1 | 2 | 3 \n===+===+===\n 4 | 5 | 6 \n===+===+===\n 7 | 8 | 9 \n\n"
+  it 'can display the starter board' do
+    result = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    expect(@test_game.board).to eq result
   end
 
 end

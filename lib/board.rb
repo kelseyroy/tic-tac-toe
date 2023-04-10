@@ -1,9 +1,8 @@
 class Board
-  
   attr_accessor :starter_board
+  
   def initialize
     @starter_board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-
   end
 
   def free_spot?(board, spot)

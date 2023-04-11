@@ -2,7 +2,11 @@ require_relative 'messages'
 
 class UserInterface
 
-    def display(message)
+    def display_board(format_board)
+        print format_board
+    end
+
+    def display_message(message)
         print message
     end
 

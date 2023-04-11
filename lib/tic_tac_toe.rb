@@ -3,22 +3,16 @@ require_relative 'messages'
 require_relative 'ui'
 
 class TicTacToe
-  def initialize
-    @board = Board.new
+  attr_accessor :board
+  
+  def initialize(board)
+    @board = board
     @message = Message.new
     @ui = UserInterface.new
-    @num_of_turns = 0
   end
 
   def play
-    puts @message.lookup(:welcome)
-    puts @message.lookup(:instructions)
-    puts display_board
+    @ui.display(@message.lookup(:welcome))
+    @ui.display(@message.lookup(:instructions))
   end
-
-  def display_board
-    @board.draw_board
-  end
-
 end
-

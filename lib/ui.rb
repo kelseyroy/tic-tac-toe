@@ -1,31 +1,18 @@
 require_relative 'messages'
 
 class UserInterface
-    def initialize
-        @message = Message.new
+
+    def display_board(format_board)
+        print format_board
     end
 
-    def start_game
-        puts @message.lookup(:welcome)
-        puts @message.lookup(:instructions)
-        puts display_board
+    def display_message(message)
+        print message
     end
 
-    def get_spot
-        puts @message.lookup(:get_spot)
+    def get_spot_input
         spot = gets.chomp.to_i
-        if valid_spot?(spot)
-            return spot
-        else
-            puts @message.lookup(:invalid_input)
-            get_spot
-        end
-    end
-
-    private
-
-    def valid_spot?(spot)
-        (1..9).to_a.include?(spot)
+        return spot
     end
 end
 

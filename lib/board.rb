@@ -1,28 +1,29 @@
 class Board
+  attr_accessor :starter_board
+  
   def initialize
-    @board = [1, 2, 3, 4, 5, 6, 7, 8, 9] 
+    @starter_board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   end
 
-  def draw_board
-    "\n" +
-    " #{@board[0]} | #{@board[1]} | #{@board[2]} " + "\n" +
-    "===+===+===" + "\n" +
-    " #{@board[3]} | #{@board[4]} | #{@board[5]} " + "\n" +
-    "===+===+===" + "\n" +
-    " #{@board[6]} | #{@board[7]} | #{@board[8]} " + "\n" +
-    "\n"
+  def free_spot?(board, spot)
+    board[spot - 1] != 'X' && board[spot - 1]  != 'O'
   end
 
-  def free_spot?(spot)
-    @board[spot - 1] != 'X' && @board[spot - 1] != 'O'
+  def mark_board(board, player_mark, spot)
+      board[spot - 1] = player_mark
   end
 
-  def valid_marker?(player_mark)
-    player_mark == 'X' || player_mark == 'O'
-  end
-
-  def mark_board(player_mark, spot)
-      @board[spot - 1] = player_mark
+  def format_board(board)
+    line_break = "\n"
+    grid_lines = "===+===+==="
+    board_grid = line_break +
+    " #{board[0]} | #{board[1]} | #{board[2]} " + line_break +
+    grid_lines + line_break +
+    " #{board[3]} | #{board[4]} | #{board[5]} " + line_break +
+    grid_lines + line_break +
+    " #{board[6]} | #{board[7]} | #{board[8]} " + line_break +
+    line_break
+    
+    return board_grid
   end
 end
-

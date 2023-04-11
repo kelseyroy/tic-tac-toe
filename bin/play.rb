@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 require './lib/tic_tac_toe.rb'
 
-game = TicTacToe.new
+board = Board.new
+game = TicTacToe.new(board.starter_board)
 game.play
 

@@ -2,6 +2,7 @@ class GamePlay
     
     PLAYER_MARKS = ["X", "O"].freeze
 
+    # TODO: Is this the correct place for the UI and Mes?
     def initialize(ui, messages, player_marks=nil)
         @ui = ui
         @messages = messages
@@ -17,18 +18,18 @@ class GamePlay
         end
     end
 
-    def take_turns(player_mark)
+    def mark_board(board, player_mark, spot)
+         board[spot - 1] = player_mark
+    end
+
+    def free_spot?(board, spot)
+      board[spot - 1] != 'X' && board[spot - 1]  != 'O'
     end
 
     def select_spot
-        is_valid = false
-        is_empty = false
-        spot = 0
-        # until is_valid && is_empty do
         @ui.display_message(@messages.lookup(:get_spot))
         spot = @ui.get_spot_input
-            # is_valid = validate_input(spot)
-        # end
+
         return spot
     end
 

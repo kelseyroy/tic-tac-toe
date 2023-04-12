@@ -1,6 +1,5 @@
 require 'spec_helper'
 require './lib/ui.rb'
-require './lib/board.rb'
 
 describe UserInterface do
     before(:each) do

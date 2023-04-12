@@ -34,15 +34,23 @@ describe GamePlay do
   end
 
   describe "get_spot" do
+
     it 'prompts the player for an input' do
         allow(@ui).to receive(:get_spot_input).and_return(5)
         expect(@game_play.select_spot).to eq(5)
-    end
-    
+    end  
+  end
+
+  describe "validate_input" do
+
     it 'throws an error when a input is not invalid' do
       expect {
         @game_play.validate_input(0)
       }.to raise_error(ArgumentError, "Not a number between 1-9")     
+    end
+
+    it 'returns true if input is valid' do
+        expect(@game_play.validate_input(5)).to eq(true)
     end
   end
 end

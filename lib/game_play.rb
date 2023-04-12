@@ -34,14 +34,9 @@ class GamePlay
     end
 
     def validate_input(spot)
-        raise ArgumentError, "Not a number between 1-9" unless valid_input?(spot)
-        valid_input?(spot)
+        is_valid = (1..9).to_a.include?(spot) 
+        raise ArgumentError, "Not a number between 1-9" unless is_valid 
+        
+        is_valid
     end
-
-    private
-
-    def valid_input?(spot)
-        (1..9).to_a.include?(spot)
-    end
-
 end

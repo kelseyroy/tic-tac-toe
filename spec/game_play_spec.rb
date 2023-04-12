@@ -1,13 +1,30 @@
 require 'spec_helper'
 require './lib/game_play.rb'
+require './lib/ui.rb'
+require './lib/messages.rb'
 
 describe GamePlay do
   before(:each) do
-    @game_play = GamePlay.new
+    @ui = UserInterface.new
+    @messages = Message.new
+    @game_play = GamePlay.new(@ui, @messages)
   end
 
-  it 'expects true to be true' do
-    expect(true).to eq true
+  let(:ui) {double('UserInterface', get_spot_input: 5)}
+
+  it 'can determine the next player' do
+    current_player = "X"
+    next_player = "O"
+    expect(@game_play.get_next_player(current_player)).to eq next_player
   end
 
+  describe "get_spot" do
+    it 'prompts the player for an input' do
+        allow(@ui).to receive(:get_spot_input).and_return("5")
+        expect(@game_play.select_spot).to eq(5)
+    end
+    it '' do 
+    
+    end
+end
 end

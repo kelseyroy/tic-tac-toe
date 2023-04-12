@@ -9,6 +9,10 @@ class Board
       board[spot - 1] = player_mark
   end
 
+  def free_spot?(board, spot)
+    board[spot - 1] != 'X' && board[spot - 1]  != 'O'
+  end
+
   def format_board(board)
     line_break = "\n"
     grid_lines = "===+===+==="

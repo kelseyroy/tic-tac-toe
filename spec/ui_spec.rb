@@ -1,6 +1,5 @@
 require 'spec_helper'
 require './lib/ui.rb'
-require './lib/board.rb'
 
 describe UserInterface do
     before(:each) do
@@ -18,13 +17,11 @@ describe UserInterface do
     end
 
     it 'can display a formatted board to the player' do
-        board = Board.new
-        format_board = board.format_board([1, 2, 3, 4, 'X', 6, 7, 8, 'O'])
+        test_board = [1, 2, 3, 4, 'X', 6, 7, 8, 'O']
         expected_output = "\n 1 | 2 | 3 \n===+===+===\n 4 | X | 6 \n===+===+===\n 7 | 8 | O \n\n"
+
         expect {
-            @ui.display_board(format_board)
+          @ui.display_board(test_board)
         }.to output(expected_output).to_stdout
     end
-    
 end
-

@@ -37,8 +37,6 @@ class GamePlay
         valid_input?(spot)
     end
 
-
-
     private
 
     def valid_input?(spot)

@@ -7,16 +7,12 @@ describe Validate do
         @test_validate = Validate.new
     end
 
-    it 'throws an error when a input is not invalid' do
-        expect {
-          @test_validate.validate_input(0, @board)
-        }.to raise_error(ArgumentError, "Invalid Input: Not a number between 1-9.")     
-      end
+    it 'returns false when a input is not valid' do
+        expect(@test_validate.validate_input(0, @board)).to eq(false)
+    end
 
-      it 'throws an error when the player selects a spot that is occupied' do
-        expect {
-          @test_validate.validate_input(5, @board)
-        }.to raise_error(ArgumentError, "Invalid Input: Spot is already occupied.") 
+      it 'returns false when the player selects a spot that is occupied' do
+        expect(@test_validate.validate_input(5, @board)).to eq(false)
       end
   
       it 'returns true if input is valid and spot if available' do

@@ -1,3 +1,5 @@
+require_relative 'validate'
+
 class GamePlay
     
     PLAYER_MARKS = ["X", "O"].freeze
@@ -8,6 +10,7 @@ class GamePlay
         @messages = messages
         player_marks ||= PLAYER_MARKS
         @player_marks = player_marks
+        @validate = Validate.new
     end
 
     def get_next_player(player)
@@ -22,21 +25,15 @@ class GamePlay
          board[spot - 1] = player_mark
     end
 
-    def free_spot?(board, spot)
-      board[spot - 1] != 'X' && board[spot - 1]  != 'O'
-    end
-
-    def select_spot
+    def select_spot(board)
         @ui.display_message(@messages.lookup(:get_spot))
         spot = @ui.get_spot_input
-
-        return spot
-    end
-
-    def validate_input(spot)
-        valid_number = (1..9).to_a.include?(spot) 
-        raise ArgumentError, "Not a number between 1-9" unless valid_number 
-        
-       true
+        is_valid = @validate.validate_input(spot, board)
+        if !is_valid
+            @ui.display_message(@messages.lookup(:invalid_input)) 
+            return select_spot(board)
+        else
+            return spot
+        end
     end
 end

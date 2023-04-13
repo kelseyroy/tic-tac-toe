@@ -2,15 +2,19 @@ require 'spec_helper'
 require './lib/game_play.rb'
 require './lib/ui.rb'
 require './lib/messages.rb'
+require './lib/validate.rb'
 
 describe GamePlay do
   before(:each) do
     @ui = UserInterface.new
     @messages = Message.new
     @game_play = GamePlay.new(@ui, @messages)
+    @validate = Validate.new
+    @board = ['O', 2, 3, 4, 'X', 6, 7, 8, 9]
   end
 
-  let(:ui) {double('UserInterface', get_spot_input: 5)}
+  let(:ui) {double('UserInterface', get_spot_input: nil)}
+  let(:validate) {double('Validate', validate_input: nil)}
 
   it 'can determine the next player' do
     current_player = "X"
@@ -28,9 +32,14 @@ describe GamePlay do
 
   describe "get_spot" do
 
-    it 'prompts the player for an input' do
-        allow(@ui).to receive(:get_spot_input).and_return(5)
-        expect(@game_play.select_spot).to eq(5)
+    it 'select spot returns a valid player input as spot' do
+        allow(@ui).to receive(:get_spot_input).and_return(9)
+        expect(@game_play.select_spot(@board)).to eq(9)
     end  
+
+    it 'reprompt the player if their input is invalid' do
+        allow(@ui).to receive(:get_spot_input).and_return(5, 9)
+        expect(@game_play.select_spot(@board)).to eq(9)
+    end
   end
 end

@@ -1,10 +1,19 @@
+require_relative 'messages'
+require_relative 'ui'
+
 class Validate
+    
+    def initialize
+        @message = Message.new
+        @ui = UserInterface.new
+    end
 
     def validate_input(input, board)
-        raise ArgumentError, "Invalid Input: Not a number between 1-9." unless valid_input?(input) 
-        raise ArgumentError, "Invalid Input: Spot is already occupied." unless free_spot?(input, board) 
-
-        true
+        if valid_input?(input) && free_spot?(input, board)
+            return true
+        else
+            return false
+        end 
     end
 
     private

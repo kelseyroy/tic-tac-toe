@@ -2,15 +2,17 @@ require 'spec_helper'
 require './lib/game_play.rb'
 require './lib/ui.rb'
 require './lib/messages.rb'
+require './lib/validate.rb'
 
 describe GamePlay do
   before(:each) do
     @ui = UserInterface.new
     @messages = Message.new
     @game_play = GamePlay.new(@ui, @messages)
+    @board = ['O', 2, 3, 4, 'X', 6, 7, 8, 9]
   end
 
-  let(:ui) {double('UserInterface', get_spot_input: 5)}
+  let(:ui) {double('UserInterface', get_spot_input: nil)}
 
   it 'can determine the next player' do
     current_player = "X"
@@ -26,31 +28,16 @@ describe GamePlay do
     expect(board).to eq result
   end
 
-  it 'prevents a player from marking a spot that has already been played' do
-    board = ['O', 2, 3, 4, 'X', 6, 7, 8, 9]
-    test_spot = 5
-
-    expect(@game_play.free_spot?(board, test_spot)).to be false
-  end
-
   describe "get_spot" do
 
-    it 'prompts the player for an input' do
-        allow(@ui).to receive(:get_spot_input).and_return(5)
-        expect(@game_play.select_spot).to eq(5)
+    it 'select spot returns a valid player input as spot' do
+        allow(@ui).to receive(:get_spot_input).and_return(9)
+        expect(@game_play.select_spot(@board)).to eq(9)
     end  
-  end
 
-  describe "validate_input" do
-
-    it 'throws an error when a input is not invalid' do
-      expect {
-        @game_play.validate_input(0)
-      }.to raise_error(ArgumentError, "Not a number between 1-9")     
-    end
-
-    it 'returns true if input is valid' do
-        expect(@game_play.validate_input(5)).to eq(true)
+    it 'reprompt the player if their input is invalid' do
+        allow(@ui).to receive(:get_spot_input).and_return(5, 9)
+        expect(@game_play.select_spot(@board)).to eq(9)
     end
   end
 end

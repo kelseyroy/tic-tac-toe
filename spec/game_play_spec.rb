@@ -9,12 +9,10 @@ describe GamePlay do
     @ui = UserInterface.new
     @messages = Message.new
     @game_play = GamePlay.new(@ui, @messages)
-    @validate = Validate.new
     @board = ['O', 2, 3, 4, 'X', 6, 7, 8, 9]
   end
 
   let(:ui) {double('UserInterface', get_spot_input: nil)}
-  let(:validate) {double('Validate', validate_input: nil)}
 
   it 'can determine the next player' do
     current_player = "X"

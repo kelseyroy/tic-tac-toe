@@ -1,7 +1,7 @@
 class Validate
 
-    def validate_input(input, board)
-        if valid_input?(input) && free_spot?(input, board)
+    def valid_free_spot?(input, board)
+        if valid_integer?(input) && free_spot?(input, board)
             return true
         else
             return false
@@ -10,7 +10,7 @@ class Validate
 
     private
 
-    def valid_input?(input)
+    def valid_integer?(input)
         (1..9).to_a.include?(input) 
     end
 

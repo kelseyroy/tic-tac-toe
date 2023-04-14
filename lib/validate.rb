@@ -1,12 +1,4 @@
-require_relative 'messages'
-require_relative 'ui'
-
 class Validate
-    
-    def initialize
-        @message = Message.new
-        @ui = UserInterface.new
-    end
 
     def validate_input(input, board)
         if valid_input?(input) && free_spot?(input, board)

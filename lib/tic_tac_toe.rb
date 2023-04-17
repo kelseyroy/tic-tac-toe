@@ -12,16 +12,15 @@ class TicTacToe
     @game = GamePlay.new(@ui, @message)
     current_player ||= 'X'
     @current_player = current_player
-    @num_of_turns = 0
+    @end_of_game = false
   end
 
   def play
     @ui.display_message(@message.lookup(:welcome))
     @ui.display_message(@message.lookup(:instructions))
     @ui.display_board(@board)
-    while @num_of_turns < 9 do
+    while !@end_of_game do
       take_turns
-      @num_of_turns += 1
     end
   end
 
@@ -30,7 +29,7 @@ class TicTacToe
   def take_turns
     spot = @game.select_spot(@board)
     @game.mark_board(@board, @current_player, spot)
-    @ui.display_board(@board)
+    @ui.display_board(@board) 
     @current_player = @game.get_next_player(@current_player)
   end
 end

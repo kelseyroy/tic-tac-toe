@@ -22,7 +22,7 @@ class TicTacToe
     while !@game_end do
       take_turns
     end
-    game_over
+    display_game_over_messages
   end
 
   private 
@@ -37,7 +37,7 @@ class TicTacToe
     end
   end
 
-  def game_over
+  def display_game_over_messages
     if @game_end == 'draw'
       @ui.display_message(@message.lookup(:draw))
     else

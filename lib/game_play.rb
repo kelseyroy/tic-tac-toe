@@ -37,7 +37,7 @@ class GamePlay
         end
     end
 
-    def end_of_game(board) #different name? check for win or draw.increases specificity
+    def check_for_win_draw(board) #different name? check for win or draw.increases specificity
         if win?(board)
             return 'win'
         elsif is_board_full?(board)
@@ -47,6 +47,8 @@ class GamePlay
         end
     end
 
+    private
+    
     def win?(board)
         if check_rows(board) || check_columns(board) || check_diagonals(board)
           return true
@@ -62,8 +64,6 @@ class GamePlay
         return true
       end
     end
-
-    private
 
     def three_in_a_row(nested_arr)
       nested_arr.each do |arr| 

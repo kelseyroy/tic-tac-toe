@@ -37,6 +37,16 @@ class GamePlay
         end
     end
 
+    def end_of_game(board) #different name? check for win or draw.increases specificity
+        if win?(board)
+            return 'win'
+        elsif is_board_full?(board)
+            return 'draw'
+        else
+            return nil
+        end
+    end
+
     def win?(board)
         if check_rows(board) || check_columns(board) || check_diagonals(board)
           return true

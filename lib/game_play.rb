@@ -37,7 +37,7 @@ class GamePlay
         end
     end
 
-    def check_for_win_draw(board) #different name? check for win or draw.increases specificity
+    def check_for_win_draw(board)
         if win?(board)
             return 'win'
         elsif is_board_full?(board)

@@ -25,13 +25,13 @@ class GamePlay
          board[spot - 1] = player_mark
     end
 
-    def select_spot(board)
-        @ui.display_message(@messages.lookup(:get_spot))
+    def select_spot(board, player_mark)
+        @ui.display_message(@messages.lookup(:"#{player_mark}_get_spot"))
         spot = @ui.get_spot_input
         is_valid = @validate.valid_free_spot?(spot, board)
         if !is_valid
             @ui.display_message(@messages.lookup(:invalid_input)) 
-            return select_spot(board)
+            return select_spot(board, player_mark)
         else
             return spot
         end

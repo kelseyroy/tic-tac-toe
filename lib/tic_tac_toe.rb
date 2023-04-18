@@ -19,7 +19,7 @@ class TicTacToe
     @ui.display_message(@message.lookup(:welcome))
     @ui.display_message(@message.lookup(:instructions))
     @ui.display_board(@board)
-    while !@game_end do
+    until @game_end do
       take_turns
     end
     display_game_over_messages
@@ -28,7 +28,7 @@ class TicTacToe
   private 
   
   def take_turns
-    spot = @game.select_spot(@board)
+    spot = @game.select_spot(@board, @current_player)
     @game.mark_board(@board, @current_player, spot)
     @ui.display_board(@board)
     @game_end = @game.check_for_win_draw(@board) 

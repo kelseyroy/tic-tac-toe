@@ -7,7 +7,7 @@ class Message
       invalid_input: "That's not a valid spot.\n",
       X_win: "Congratulations player X, you have won!\n",
       O_win: "Congratulations player O, you have won!\n",
-      draw: "It's a draw!"
+      draw: "It's a draw!\n"
     }.freeze
 
   def initialize(messages=nil)

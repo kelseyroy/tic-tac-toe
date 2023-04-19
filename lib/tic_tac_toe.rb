@@ -19,7 +19,7 @@ class TicTacToe
     @ui.display_message(@message.lookup(:welcome))
     @ui.display_message(@message.lookup(:instructions))
     @ui.display_board(@board)
-    while !@game_end do
+    until @game_end do
       take_turns
     end
     display_game_over_messages

@@ -4,7 +4,6 @@ class GamePlay
     
     PLAYER_MARKS = ["X", "O"].freeze
 
-    # TODO: Is this the correct place for the UI and Mes?
     def initialize(ui, messages, player_marks=nil)
         @ui = ui
         @messages = messages

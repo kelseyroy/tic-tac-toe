@@ -22,8 +22,8 @@ describe GamePlay do
     board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     @game_play.mark_board(board, 'X', 5)
     @game_play.mark_board(board, 'O', 1)
-    result = ['O', 2, 3, 4, 'X', 6, 7, 8, 9]
-    expect(board).to eq result
+
+    expect(board).to eq(@board)
   end
 
   context "get_spot" do

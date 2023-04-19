@@ -28,7 +28,7 @@ class TicTacToe
   private 
   
   def take_turns
-    spot = @game.select_spot(@board)
+    spot = @game.select_spot(@board, @current_player)
     @game.mark_board(@board, @current_player, spot)
     @ui.display_board(@board)
     @game_end = @game.check_for_win_draw(@board) 

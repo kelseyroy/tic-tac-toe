@@ -22,8 +22,8 @@ describe GamePlay do
     board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     @game_play.mark_board(board, 'X', 5)
     @game_play.mark_board(board, 'O', 1)
-    result = ['O', 2, 3, 4, 'X', 6, 7, 8, 9]
-    expect(board).to eq result
+
+    expect(board).to eq(@board)
   end
 
   context "get_spot" do
@@ -31,12 +31,12 @@ describe GamePlay do
 
     it 'select spot returns a valid player input as spot' do
         allow(@ui).to receive(:get_spot_input).and_return(9)
-        expect(@game_play.select_spot(@board)).to eq(9)
+        expect(@game_play.select_spot(@board, 'X')).to eq(9)
     end  
 
     it 'reprompt the player if their input is invalid' do
         allow(@ui).to receive(:get_spot_input).and_return(5, 9)
-        expect(@game_play.select_spot(@board)).to eq(9)
+        expect(@game_play.select_spot(@board, 'X')).to eq(9)
     end
   end
 

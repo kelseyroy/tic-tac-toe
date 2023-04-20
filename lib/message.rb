@@ -16,7 +16,7 @@ class Message
   end
 
   def lookup(message)
-    raise ArgumentError, 'Message does not exist' unless @messages.key?(message)
+    raise ArgumentError, "Message does not exist" unless @messages.key?(message)
 
     @messages[message]
   end

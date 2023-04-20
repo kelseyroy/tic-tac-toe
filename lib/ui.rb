@@ -1,4 +1,4 @@
-require_relative 'message'
+require_relative "message"
 
 class UserInterface
   def display_board(board)
@@ -17,7 +17,7 @@ class UserInterface
 
   def format_board(board)
     line_break = "\n"
-    grid_lines = '===+===+==='
+    grid_lines = "===+===+==="
 
     line_break +
     " #{board[0]} | #{board[1]} | #{board[2]} " + line_break +

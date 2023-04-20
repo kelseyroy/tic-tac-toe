@@ -1,6 +1,6 @@
-require_relative 'message'
-require_relative 'ui'
-require_relative 'game_play'
+require_relative "message"
+require_relative "ui"
+require_relative "game_play"
 
 class TicTacToe
   def initialize(board = nil, current_player = nil)
@@ -9,7 +9,7 @@ class TicTacToe
     @message = Message.new
     @ui = UserInterface.new
     @game = GamePlay.new(@ui, @message)
-    current_player ||= 'X'
+    current_player ||= "X"
     @current_player = current_player
     @game_end = nil
   end
@@ -18,7 +18,9 @@ class TicTacToe
     @ui.display_message(@message.lookup(:welcome))
     @ui.display_message(@message.lookup(:instructions))
     @ui.display_board(@board)
-    until @game_end do take_turns end
+    until @game_end
+      take_turns
+    end
     display_game_over_messages
   end
 
@@ -33,7 +35,7 @@ class TicTacToe
   end
 
   def display_game_over_messages
-    @ui.display_message(@message.lookup(:draw)) if @game_end == 'draw'
-    @ui.display_message(@message.lookup(:"#{@current_player}_win")) if @game_end == 'win'
+    @ui.display_message(@message.lookup(:draw)) if @game_end == "draw"
+    @ui.display_message(@message.lookup(:"#{@current_player}_win")) if @game_end == "win"
   end
 end

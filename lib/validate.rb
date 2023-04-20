@@ -10,6 +10,6 @@ class Validate
   end
 
   def free_spot?(input, board)
-    board[input - 1] != 'X' && board[input - 1] != 'O'
+    board[input - 1] != "X" && board[input - 1] != "O"
   end
 end

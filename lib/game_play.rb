@@ -1,4 +1,4 @@
-require_relative 'validate'
+require_relative "validate"
 
 class GamePlay
   PLAYER_MARKS = %w[X O].freeze
@@ -34,8 +34,8 @@ class GamePlay
   end
 
   def check_for_win_draw(board)
-    return 'win' if win?(board)
-    return 'draw' if board_full?(board)
+    return "win" if win?(board)
+    return "draw" if board_full?(board)
 
     nil
   end

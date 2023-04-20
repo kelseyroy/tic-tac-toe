@@ -9,7 +9,7 @@ This game requires `Ruby 3.2.1` to play.
 ## Setup
 1. [Clone the repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) to your local computer.
 2. Use your terminal to navigate into your new tic-tac-toe folder and install project dependencies by running `bundle install`.
-3. To run the CLI application, call `ruby bin/play.rb` from within the tic-tac-toe folder. 
+3. To run the CLI application, call `ruby bin/play.rb` from within the tic-tac-toe folder. Or, to mark the script as executable, run the command `chmod +x bin/play.rb` and then call `bin/play.rb` from within the tic-tac-toe folder.
 4. To run the tests, call `bundle exec rspec` from within the tic-tac-toe foler.
 
 ## How to play

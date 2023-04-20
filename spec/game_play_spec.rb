@@ -10,6 +10,7 @@ describe GamePlay do
     @messages = Message.new
     @game_play = GamePlay.new(@ui, @messages)
     @board = ['O', 2, 3, 4, 'X', 6, 7, 8, 9]
+    allow($stdout).to receive(:write)
   end
 
   it 'can determine the next player' do

@@ -11,8 +11,7 @@ class UserInterface
     end
 
     def get_spot_input
-        spot = gets.chomp.to_i
-        return spot
+        gets.chomp.to_i
     end
 
     private

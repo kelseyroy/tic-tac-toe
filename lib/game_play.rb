@@ -13,15 +13,13 @@ class GamePlay
     end
 
     def get_next_player(player)
-        if player == @player_marks[0]
-            return @player_marks[1]
-        else
-            return @player_marks[0]
-        end
+        return @player_marks[1] if player == @player_marks[0]
+
+        return @player_marks[0]
     end
 
     def mark_board(board, player_mark, spot)
-         board[spot - 1] = player_mark
+      board[spot - 1] = player_mark
     end
 
     def select_spot(board, player_mark)
@@ -31,37 +29,26 @@ class GamePlay
       if !is_valid
           @ui.display_message(@messages.lookup(:invalid_input)) 
           return select_spot(board, player_mark)
-      else
-          return spot
       end
+      
+      spot
     end
 
     def check_for_win_draw(board)
-        if win?(board)
-            return 'win'
-        elsif is_board_full?(board)
-            return 'draw'
-        else
-            return nil
-        end
+      return 'win' if win?(board)
+      return 'draw' if is_board_full?(board)
+
+      nil
     end
 
     private
     
     def win?(board)
-        if check_rows(board) || check_columns(board) || check_diagonals(board)
-          return true
-        else
-          return false
-        end
+      check_rows(board) || check_columns(board) || check_diagonals(board)
     end
 
     def is_board_full?(board)
-      if board.uniq.length > 2
-        return false
-      else
-        return true
-      end
+      board.uniq.length <= 2
     end
 
     def three_in_a_row(nested_arr)
@@ -70,26 +57,30 @@ class GamePlay
           return true
         end
       end
-      return false
+
+      false
     end
     
     def check_rows(board)
       row_one = [board [0], board[1] , board[2]]
       row_two = [board [3], board[4] , board[5]]
       row_three = [board [6], board[7] , board[8]]
-      return three_in_a_row([row_one, row_two, row_three])
+
+      three_in_a_row([row_one, row_two, row_three])
     end
 
     def check_columns(board)
       column_one = [board [0], board[3] , board[6]]
       column_two = [board [1], board[4] , board[7]]
       column_three = [board [2], board[5] , board[8]]
-      return three_in_a_row([column_one, column_two, column_three])
+
+      three_in_a_row([column_one, column_two, column_three])
     end
 
     def check_diagonals(board)
       diagonal_one = [board [0], board[4] , board[8]]
       diagonal_two = [board [2], board[4] , board[6]]
-      return three_in_a_row([diagonal_one, diagonal_two]) 
+
+      three_in_a_row([diagonal_one, diagonal_two]) 
     end
 end

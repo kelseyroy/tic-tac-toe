@@ -16,6 +16,8 @@ This game requires `Ruby 3.2.1` to play.
 
 Tic Tac Toe is a two player game played on a 3 x 3 grid. One player will mark the grid with 'X' and the other player will mark the grid with 'O'. Each player takes turns placing their mark in the squares on the grid, with the goal of getting 3 marks in a row.
 
+https://user-images.githubusercontent.com/89801075/233448701-7423a397-bcce-4cd4-ad25-c62d83897932.mov
+
 To start the game, run `ruby bin/play.rb` from within the tic-tac-toe folder. 
 
 When prompted, enter a number between 1-9 that corresponds with an available square. Then press `enter` on your keyboard to submit your selection.
@@ -24,7 +26,7 @@ Press the `ctrl + c` keys on your keyboard to quit out of the game at any time.
 
 ## Built with
 
-* ![image]({https://img.shields.io/badge/Ruby-CC342D?style=for-the-badge&logo=ruby&logoColor=white})
+* [Ruby](https://www.ruby-lang.org/)
 * [Rspec](https://rspec.info/)
 
 
